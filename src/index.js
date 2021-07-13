@@ -8,11 +8,16 @@ const NumberBtn = (props) => (
 );
 
 const Stars = (props) => (
-  <div className="star" />
+  <React.Fragment>
+    {utils.range(1, props.count).map(starId =>
+      <div key={starId} className="star" />)}
+  </React.Fragment>
 )
 
 const StarMatch = () => {
   const [stars, setStars] = useState(utils.random(1, 9));
+  const [availableNums, setAvailableNums] = useState(...);
+  const [candidateNums, setCandidateNums] = useState();
   return (
     <div className="game">
       <div className="help">
@@ -20,8 +25,7 @@ const StarMatch = () => {
       </div>
       <div className="body">
         <div className="left">
-          {utils.range(1, stars).map(starId =>
-            <Stars />)}
+          <Stars count={stars}/>
         </div>
         <div className="right">
           {utils.range(1, 9).map(number => <NumberBtn key={number} number={number} />)}
