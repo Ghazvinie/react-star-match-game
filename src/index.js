@@ -3,11 +3,13 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 
-const Number = (props) => (
-  <button className="number">{props.number}</button>
+const NumberBtn = (props) => (
+  <button className="number" onClick={() => console.log(props.number)}>{props.number}</button>
+);
+
+const Stars = (props) => (
+  <div className="star" />
 )
-
-
 
 const StarMatch = () => {
   const [stars, setStars] = useState(utils.random(1, 9));
@@ -19,10 +21,10 @@ const StarMatch = () => {
       <div className="body">
         <div className="left">
           {utils.range(1, stars).map(starId =>
-            <div key={starId} className="star" />)}
+            <Stars />)}
         </div>
         <div className="right">
-          {utils.range(1, 9).map(number => <Number key={number} number={number} />)}
+          {utils.range(1, 9).map(number => <NumberBtn key={number} number={number} />)}
         </div>
       </div>
       <div className="timer">Time Remaining: 10</div>
